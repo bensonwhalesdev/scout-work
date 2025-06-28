@@ -41,7 +41,7 @@ const Header = () => {
             </div>
 
             {/* Mobile Menu Icon */}
-            <div className="md:hidden cursor-pointer" onClick={toggleSidebar}>
+            <div className="md:hidden cursor-pointer text-white" onClick={toggleSidebar}>
               <AlignRight size={28} />
             </div>
           </div>
@@ -56,7 +56,7 @@ const Header = () => {
       >
         <div className="flex justify-between items-center px-4 py-4 border-b">
           <img className="w-16" src="/logo1.png" alt="logo" />
-          <X className="cursor-pointer" onClick={toggleSidebar} />
+          <X className="cursor-pointer text-white" onClick={toggleSidebar} />
         </div>
 
         <ul className="flex flex-col p-4 space-y-4 font-bold text-white">
