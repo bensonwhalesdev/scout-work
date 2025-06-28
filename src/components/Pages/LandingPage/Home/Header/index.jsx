@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { AlignRight, X } from 'lucide-react';
-import ReuseableButton from '@/components/Reuseables/ResuableButton';
+import React, { useState } from "react";
+import { AlignRight, BadgePlus, LockKeyholeOpen, X } from "lucide-react";
+import ReuseableButton from "@/components/Reuseables/ResuableButton";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ const Header = () => {
         <nav className="flex justify-between items-center p-2 w-[90%] mx-auto">
           {/* Logo */}
           <div>
-            <img className="w-20" src="/logo.jpg" alt="logo" />
+            <img className="w-20" src="/logo1.png" alt="logo" />
           </div>
 
           {/* Desktop Navigation */}
@@ -29,8 +29,15 @@ const Header = () => {
           {/* Buttons + Menu */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex gap-2">
-              <ReuseableButton classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black" text="Login" />
-              <ReuseableButton classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black" text="+ Register" />
+              <ReuseableButton
+                classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black"
+                text="Login"
+                icon={<LockKeyholeOpen className="mr-2" size={18} />}
+              />
+              <ReuseableButton
+                classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black"
+                text="Register" icon={<BadgePlus className="mr-2" size={18}  />}
+              />
             </div>
 
             {/* Mobile Menu Icon */}
@@ -42,9 +49,13 @@ const Header = () => {
       </header>
 
       {/* Sidebar */}
-      <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
         <div className="flex justify-between items-center px-4 py-4 border-b">
-          <img className="w-16" src="/logo.jpg" alt="logo" />
+          <img className="w-16" src="/logo1.png" alt="logo" />
           <X className="cursor-pointer" onClick={toggleSidebar} />
         </div>
 
@@ -56,10 +67,24 @@ const Header = () => {
         </ul>
 
         <div className="p-4 flex flex-col gap-2">
-          <ReuseableButton classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black" text="Login" />
-          <ReuseableButton classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black" text="+ Register" />
+          <ReuseableButton
+            classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black"
+            text="Login"
+            icon={<LockKeyholeOpen className="mr-2" size={18} />}
+          />
+          <ReuseableButton
+            classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black"
+            text="Register" icon={<BadgePlus className="mr-2" size={18}  />}
+          />
         </div>
       </div>
+
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={toggleSidebar}
+        ></div>
+      )}
     </>
   );
 };

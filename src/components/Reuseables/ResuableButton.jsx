@@ -2,11 +2,11 @@ import React from 'react'
 import { Button } from "@/components/ui/button"
 
 
-const ReuseableButton = ({text, classStyle, onClick}) => {
+const ReuseableButton = ({text, classStyle, onClick, icon}) => {
   
   return (
     <div>
-      <Button className={`${classStyle}`} onClick={onClick}>{text}</Button>
+      <Button className={`${classStyle}`} onClick={onClick}>{icon && icon} {text}</Button>
     </div>
   )
 }
