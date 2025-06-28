@@ -3,6 +3,7 @@ import LandingPage from "./components/Pages/LandingPage"
 import Home from "./components/Pages/LandingPage/Home"
 import Authpage from "./components/Pages/(AuthPage)"
 import AuthTabs from "./components/Pages/(AuthPage)/Auth"
+import Dashboard from "./components/Pages/Dashboard"
 
 
 
@@ -20,6 +21,12 @@ const App = createBrowserRouter([
     Component: Authpage,
     children: [
       { index: true, Component: AuthTabs}
+    ]
+  },
+  {
+    path: "/dashboard",
+    children:[
+      { index: true, Component: Dashboard}
     ]
   }
 ])
