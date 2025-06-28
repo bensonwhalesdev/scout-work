@@ -1,5 +1,6 @@
 import React from 'react';
 import { Search, MapPin, Briefcase } from 'lucide-react';
+import 'animate.css'
 
 const HeroSection = () => {
   return (
@@ -12,7 +13,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white w-full max-w-6xl">
-        <h1 className="text-4xl md:text-5xl font-bold mb-8">
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 animate__animated animate__slideInDown">
           Find Your Dream Job
         </h1>
 

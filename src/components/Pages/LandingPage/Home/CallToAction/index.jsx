@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CallToAction = () => {
   return (
@@ -8,7 +9,7 @@ const CallToAction = () => {
         {/* Image */}
         <div className="md:w-1/2">
           <img
-            src="/team.avif" // <- Replace with your actual image
+            src="/team.avif" 
             alt="Team working"
             className="w-full h-full object-cover"
           />
@@ -38,9 +39,11 @@ const CallToAction = () => {
             </li>
           </ul>
 
+          <Link to={'/auth'}>
           <button className="bg-white text-green-800 font-medium py-2 px-5 rounded-md hover:bg-gray-100 transition-all w-fit">
             Get Started
           </button>
+          </Link>
         </div>
       </div>
     </section>
