@@ -53,8 +53,8 @@ const HeroSection = () => {
               Categories
             </label>
             <div className="flex items-center bg-gray-100 rounded-md px-3 py-2">
-              <select className="bg-transparent outline-none w-full text-sm appearance-none">
-                <option>All Categories</option>
+              <select className="bg-transparent outline-none w-full text-sm appearance-none bg-">
+                <option >All Categories</option>
                 <option>Software Engineer</option>
                 <option>Doctor</option>
                 <option>Design</option>
@@ -64,7 +64,7 @@ const HeroSection = () => {
 
           {/* Search Button */}
           <div className="flex items-end">
-            <button className="bg-[#FF701D] text-white px-6 py-3 rounded-md w-full md:w-auto text-sm flex items-center justify-center gap-2 cursor-pointer">
+            <button className="bg-[#26AE61] hover:bg-[#195A22] text-white px-6 py-3 rounded-md w-full md:w-auto text-sm flex items-center justify-center gap-2 cursor-pointer">
               <Search size={16} />
               Search
             </button>

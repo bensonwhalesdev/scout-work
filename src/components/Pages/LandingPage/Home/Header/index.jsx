@@ -9,8 +9,8 @@ const Header = () => {
   return (
     <>
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow border-b border-gray-300">
-        <nav className="flex justify-between items-center p-2 w-[90%] mx-auto">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#195A22] shadow border-b border-gray-300">
+        <nav className="flex justify-between items-center p-1 w-[90%] mx-auto">
           {/* Logo */}
           <div>
             <img className="w-20" src="/logo1.png" alt="logo" />
@@ -18,7 +18,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex border-gray-300 border-l border-r px-10 py-2">
-            <ul className="flex gap-4 font-bold">
+            <ul className="flex gap-4 font-bold text-white">
               <li>Home</li>
               <li>About</li>
               <li>Employer</li>
@@ -30,12 +30,12 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <div className="hidden md:flex gap-2">
               <ReuseableButton
-                classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black"
+                classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#195A22] text-black"
                 text="Login"
                 icon={<LockKeyholeOpen className="mr-2" size={18} />}
               />
               <ReuseableButton
-                classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black"
+                classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#195A22] text-black"
                 text="Register" icon={<BadgePlus className="mr-2" size={18}  />}
               />
             </div>
@@ -50,7 +50,7 @@ const Header = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-64 bg-[#195A22] shadow-lg z-50 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -59,7 +59,7 @@ const Header = () => {
           <X className="cursor-pointer" onClick={toggleSidebar} />
         </div>
 
-        <ul className="flex flex-col p-4 space-y-4 font-bold">
+        <ul className="flex flex-col p-4 space-y-4 font-bold text-white">
           <li onClick={toggleSidebar}>Home</li>
           <li onClick={toggleSidebar}>About</li>
           <li onClick={toggleSidebar}>Employer</li>
@@ -68,12 +68,12 @@ const Header = () => {
 
         <div className="p-4 flex flex-col gap-2">
           <ReuseableButton
-            classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black"
+            classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#195A22] text-black"
             text="Login"
             icon={<LockKeyholeOpen className="mr-2" size={18} />}
           />
           <ReuseableButton
-            classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#FF701D] text-black"
+            classStyle="bg-[#fff] hover:bg-[#fff] cursor-pointer hover:text-[#195A22] text-black"
             text="Register" icon={<BadgePlus className="mr-2" size={18}  />}
           />
         </div>
