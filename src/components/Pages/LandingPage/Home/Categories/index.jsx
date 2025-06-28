@@ -5,22 +5,27 @@ const Category = () => {
     {
       text: "Web Development",
       image: "/web-dev.avif",
+      listing: 1
     },
     {
       text: "Marketing",
       image: "/marketing.avif",
+      listing: 3
     },
     {
       text: "Baby Sitting",
       image: "/baby-sitting.avif",
+      listing: 2
     },
     {
       text: "Photography",
       image: "/photography.avif",
+      listing: 2
     },
     {
       text: "Sailor",
       image: "/sailor.avif",
+      listing: 1
     },
   ];
 
@@ -38,7 +43,8 @@ const Category = () => {
               <img src={item.image} alt={item.text} className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"/>
             </div>
             <div className="p-4 text-center">
-              <h3 className="text-lg font-semibold text-gray-800">{item.text}</h3>
+              <h3 className="text-lg font-semibold text-gray-800">Skill : {item.text}</h3>
+              <p className="text-gray-600">Listing : {item.listing}</p>
             </div>
           </div>
         ))}
