@@ -22,11 +22,11 @@ const Category = () => {
       image: "/photography.avif",
       listing: 2
     },
-    {
-      text: "Sailor",
-      image: "/sailor.avif",
-      listing: 1
-    },
+    // {
+    //   text: "Sailor",
+    //   image: "/sailor.avif",
+    //   listing: 1
+    // },
   ];
 
   return (
