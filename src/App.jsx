@@ -7,6 +7,7 @@ import Dashboard from "./components/Pages/Dashboard";
 import NotFound from "./components/Pages/(404Page)";
 import FreelancerDashboard from "./components/Pages/FreelanceDashboard";
 import PostaJob from "./components/Pages/Dashboard/SideBar/PostAJob";
+import ManageJobs from "./components/Pages/Dashboard/SideBar/ManageJobs";
 
 const App = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ const App = createBrowserRouter([
     path: "/dashboard",
     children: [
       { index: true, Component: Dashboard },
-      { path: "postajob", Component:  PostaJob }
+      { path: "postajob", Component:  PostaJob },
+      { path: "managejobs", Component: ManageJobs}
     ],
   },
   {

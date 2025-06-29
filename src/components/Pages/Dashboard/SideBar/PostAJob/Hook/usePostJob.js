@@ -17,7 +17,7 @@ const usePostJob = () => {
       const response = await apiClient.post("/job", formData);
       setSuccess(true);
       toast.success("Job posted successfully!");
-      navigate("/dashboard");
+      navigate("/dashboard/managejobs");
       return response.data;
     } catch (err) {
       const message = err.response?.data?.message || "An error occurred";

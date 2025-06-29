@@ -158,6 +158,22 @@ const PostaJob = () => {
                     <option value="">Select category</option>
                     <option value="Web development">Web development</option>
                     <option value="Mobile development">Mobile development</option>
+                    <option value="Health Care">Health Care</option>
+                    <option value="Design">Design</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Customer Support">Customer Support</option>
+                    <option value="Human Resources">Human Resources</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Education">Education</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Project Management">Project Management</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                    <option value="DevOps">DevOps</option>
+                    <option value="Content Writing">Content Writing</option>
+                    <option value="Product Management">Product Management</option>
                   </select>
                 </div>
               </div>

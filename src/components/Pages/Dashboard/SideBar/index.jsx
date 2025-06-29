@@ -56,7 +56,9 @@ const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
             <Link to={'/dashboard/postajob'} >
             <li className="px-4 py-2 hover:bg-green-300 cursor-pointer">Post a Job</li>
             </Link>
+            <Link to={'/dashboard/managejobs'}>
             <li className="px-4 py-2 hover:bg-green-300 cursor-pointer">Manage Jobs</li>
+            </Link>
           </ul>
         </div>
       )}
