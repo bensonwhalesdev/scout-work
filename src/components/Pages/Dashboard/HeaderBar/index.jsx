@@ -1,15 +1,19 @@
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const HeaderBar = () => {
+const HeaderBar = ({ toggleSidebar }) => {
   return (
-    <header className="bg-white shadow px-4 py-2 flex justify-between items-center w-full">
+    <header className="bg-white shadow px-4 py-2 flex justify-between items-center w-full border-b-2 border-green-400">
       <div className="flex items-center gap-4">
-        <img src="/logo1.png" alt="logo" className="h-10" />
-        <nav className="hidden md:flex gap-6 text-sm text-gray-600">
-          <a href="#">Home</a>
+        <button className="md:hidden" onClick={toggleSidebar}>
+          <Menu size={24} />
+        </button>
+        <img src="/logo1.png" alt="logo" className="h-10 hidden md:block" />
+        <nav className="hidden md:flex gap-6 font-bold text-sm text-gray-600">
+          <Link to={'/dashboard'}>Home</Link>
           <div className="relative group">
-            <button className="flex items-center gap-1">For Candidates <ChevronDown size={16} /></button>
+            <button className="flex items-center gap-1">For Talents <ChevronDown size={16} /></button>
           </div>
           <div className="relative group">
             <button className="flex items-center gap-1">For Employers <ChevronDown size={16} /></button>
@@ -17,8 +21,9 @@ const HeaderBar = () => {
         </nav>
       </div>
       <div className="flex items-center gap-2">
-        <img src="/avatar.avif" alt="avatar" className="w-8 h-8 rounded-full" />
-        <span className="text-sm">Hi, Tom <ChevronDown size={16} /></span>
+        <img src="/avatar.avif" alt="avatar" className="w-8 h-8 rounded-full border-1 border-green-500" />
+        <span className="text-sm">Hi, Tom</span>
+        <ChevronDown size={16} />
       </div>
     </header>
   );
