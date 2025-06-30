@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import Sidebar from './SideBar';
-import HeaderBar from './HeaderBar';
-
 
 const Dashboard = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -13,9 +10,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      <Sidebar isCollapsed={isSidebarCollapsed} isMobileOpen={isMobileSidebarOpen} toggleSidebar={toggleSidebar} />
       <main className="flex-1">
-        <HeaderBar toggleSidebar={toggleSidebar} />
         <div className="p-6">
           <h1 className="text-2xl font-bold text-gray-800">Hi, Tom</h1>
           <p className="text-gray-500 mb-6">We are glad to see you again!</p>
@@ -46,8 +41,8 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow p-4 hover:shadow-xl ">
-              <h2 className="text-lg font-semibold text-gray-800 mb-4  border-b-2 border-green-400">Your Listing Packages</h2>
+            <div className="bg-white rounded-xl shadow p-4 hover:shadow-xl">
+              <h2 className="text-lg font-semibold text-gray-800 mb-4 border-b-2 border-green-400">Your Listing Packages</h2>
               <div className="text-sm">
                 <p><strong>Basic</strong></p>
                 <p className="text-gray-500 text-sm">Order: #28768 | Price: $58.00 | 3 listings posted</p>
