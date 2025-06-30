@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import HeaderBar from "./HeaderBar";
 import Sidebar from "./SideBar";
+import { apiClient } from "@/lib/client";
+import useGetUserStore from "@/store/useGetUserStore";
 
 
 const DashboardLayout = () => {
@@ -11,6 +13,23 @@ const DashboardLayout = () => {
   const toggleSidebar = () => {
     setIsMobileSidebarOpen(!isMobileSidebarOpen);
   };
+
+  const { setUser, setLoading, setError } = useGetUserStore();
+  
+    useEffect(() => {
+      const fetchUser = async () => {
+        try {
+          const res = await apiClient.get("/user");
+          setUser(res.data);
+        } catch (err) {
+          setError(err.response?.data?.message || "Failed to fetch user");
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchUser();
+    }, []);
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <HeaderBar toggleSidebar={toggleSidebar} />

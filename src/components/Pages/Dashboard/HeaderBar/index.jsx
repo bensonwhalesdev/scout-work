@@ -1,8 +1,10 @@
 import React from 'react';
 import { ChevronDown, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import useGetUserStore from '@/store/useGetUserStore';
 
 const HeaderBar = ({ toggleSidebar }) => {
+  const { user } = useGetUserStore();
   return (
     <header className="bg-white shadow px-4 py-2 flex justify-between items-center w-full border-b-2 border-green-400">
       <div className="flex items-center gap-4">
@@ -21,9 +23,8 @@ const HeaderBar = ({ toggleSidebar }) => {
         </nav>
       </div>
       <div className="flex items-center gap-2">
-        <img src="/avatar.avif" alt="avatar" className="w-8 h-8 rounded-full border-1 border-green-500" />
-        <span className="text-sm">Hi, Tom</span>
-        <ChevronDown size={16} />
+        <img src={user?.avatar || '/avatar.avif' } alt="avatar" className="w-8 h-8 rounded-full border-1 border-green-500" />
+        <span className="text-sm">Hi, {user?.firstName}</span>
       </div>
     </header>
   );

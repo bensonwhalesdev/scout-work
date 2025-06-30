@@ -38,7 +38,7 @@ const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
           <div className="relative">
       <button
         onClick={toggleDropdown}
-        className={`flex items-center w-full gap-2 px-4 py-2 rounded-md hover:bg-green-300 transition cursor-pointer ${
+        className={`flex items-center w-full gap-2 px-1 py-2 rounded-md hover:bg-green-300 transition cursor-pointer ${
           isCollapsed ? 'justify-center' : 'justify-between'
         }`}
       >
@@ -63,20 +63,22 @@ const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
         </div>
       )}
     </div>
-          <button className={`flex items-center gap-2 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
+          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
             <Building2 /> {!isCollapsed && 'Companies'}
           </button>
-          <button className={`flex items-center gap-2 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
+          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
             <ClipboardList /> {!isCollapsed && 'Tasks'}
           </button>
         </div>
 
         <div className={`text-sm mt-8 font-bold ${isCollapsed ? 'hidden' : 'text-green-600'}`}>Account</div>
         <div className="flex flex-col gap-4 mt-2">
-          <button className={`flex items-center gap-2 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
+          <Link to={'/dashboard/userprofile'}>
+          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 cursor-pointer ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
             <Settings /> {!isCollapsed && 'My Profile'}
           </button>
-          <button className={`flex items-center gap-2 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
+          </Link>
+          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
             <LogOut /> {!isCollapsed && 'Logout'}
           </button>
         </div>
