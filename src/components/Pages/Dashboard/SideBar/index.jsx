@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { LayoutDashboard, MessageSquare, Bookmark, Briefcase, Building2, ClipboardList, Settings, LogOut, X, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import useLogout from '@/Hook/useLogout';
 
 const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const logout = useLogout();
 
   const toggleDropdown = () => setIsOpen(!isOpen);
   return (
@@ -63,11 +65,8 @@ const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
         </div>
       )}
     </div>
-          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
-            <Building2 /> {!isCollapsed && 'Companies'}
-          </button>
-          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
-            <ClipboardList /> {!isCollapsed && 'Tasks'}
+          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 rounded-md cursor-pointer ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
+            <ClipboardList /> {!isCollapsed && 'Browse Freelancers'}
           </button>
         </div>
 
@@ -78,7 +77,7 @@ const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
             <Settings /> {!isCollapsed && 'My Profile'}
           </button>
           </Link>
-          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
+          <button onClick={logout} className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
             <LogOut /> {!isCollapsed && 'Logout'}
           </button>
         </div>

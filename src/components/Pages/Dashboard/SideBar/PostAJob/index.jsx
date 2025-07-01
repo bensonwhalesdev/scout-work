@@ -169,6 +169,7 @@ const PostaJob = () => {
                   <option value="Human Resources">Human Resources</option>
                   <option value="Finance">Finance</option>
                   <option value="Education">Education</option>
+                  <option value="Transportation">Transportation</option>
                   <option value="Legal">Legal</option>
                   <option value="Project Management">Project Management</option>
                   <option value="Engineering">Engineering</option>
