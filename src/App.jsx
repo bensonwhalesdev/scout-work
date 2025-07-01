@@ -10,7 +10,7 @@ import PostaJob from "./components/Pages/Dashboard/SideBar/PostAJob";
 import ManageJobs from "./components/Pages/Dashboard/SideBar/ManageJobs";
 import JobDetails from "./components/Pages/Dashboard/SideBar/ManageJobs/JobDetails.jsx";
 import DashboardLayout from "./components/Pages/Dashboard/DashboardLayout";
-import UserProfile from "./components/Pages/Dashboard/SideBar/UserProfile";
+import ProfileTabs from "./components/Pages/Dashboard/SideBar/UserProfile/ProfileTabs";
 
 const App = createBrowserRouter([
   {
@@ -31,7 +31,7 @@ const App = createBrowserRouter([
       { path: "postajob", Component:  PostaJob },
       { path: "managejobs", Component: ManageJobs},
       { path: "managejobs/:id", Component: JobDetails },
-      { path: "userprofile", Component: UserProfile},
+      { path: "userprofile", Component: ProfileTabs},
     ],
   },
   {

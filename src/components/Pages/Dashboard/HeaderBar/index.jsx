@@ -22,10 +22,13 @@ const HeaderBar = ({ toggleSidebar }) => {
           </div>
         </nav>
       </div>
+      <Link to={'/dashboard/userprofile'}>
       <div className="flex items-center gap-2">
         <img src={user?.avatar || '/avatar.avif' } alt="avatar" className="w-8 h-8 rounded-full border-1 border-green-500" />
         <span className="text-sm">Hi, {user?.firstName}</span>
       </div>
+      </Link>
+      
     </header>
   );
 };

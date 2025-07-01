@@ -54,10 +54,10 @@ const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
         <div className="absolute left-0 top-full mt-2 w-55 bg-white shadow-lg border rounded-md z-20">
           <ul className="text-sm text-gray-700">
             <Link to={'/dashboard/postajob'} >
-            <li className="px-4 py-2 hover:bg-green-300 cursor-pointer">Post a Job</li>
+            <li onClick={toggleDropdown} className="px-4 py-2 hover:bg-green-300 cursor-pointer">Post a Job</li>
             </Link>
             <Link to={'/dashboard/managejobs'}>
-            <li className="px-4 py-2 hover:bg-green-300 cursor-pointer">Manage Jobs</li>
+            <li onClick={toggleDropdown} className="px-4 py-2 hover:bg-green-300 cursor-pointer">Manage Jobs</li>
             </Link>
           </ul>
         </div>

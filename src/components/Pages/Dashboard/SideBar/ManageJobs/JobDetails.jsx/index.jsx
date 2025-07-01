@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import useGetUserJobs from "../Hook/useGetUserJobs";
 import { apiClient } from "@/lib/client";
-import {MapPin,Globe,Briefcase,Tag,DollarSign,Laptop,Building,ExternalLink,Pencil,Trash2,} from "lucide-react";
+import {MapPin,Globe,Briefcase,Tag,DollarSign,Laptop,Building,ExternalLink,Pencil,Trash2, Building2,} from "lucide-react";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -59,6 +59,10 @@ const JobDetails = () => {
       </h1>
 
       <div className="grid gap-4 sm:grid-cols-2 bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-200">
+        <p className="flex items-center gap-2 text-gray-700">
+          <Building2 className="w-5 h-5 text-green-600" />
+          <span><strong>Company:</strong> {job.company}</span>
+        </p>
         <p className="flex items-center gap-2 text-gray-700">
           <MapPin className="w-5 h-5 text-green-600" />
           <span><strong>Location:</strong> {job.location}</span>
@@ -142,6 +146,10 @@ const JobDetails = () => {
             <div>
               <Label>Rate</Label>
               <Input type="number" value={formData.rate || ""} onChange={(e) => setFormData({ ...formData, rate: e.target.value })} />
+            </div>
+            <div>
+              <Label>Description</Label>
+              <textarea value={formData.description || ""} onChange={(e) => setFormData({ ...formData, description: e.target.value })} className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-400" rows={4} placeholder="Enter a brief description about your work, experience, or services..."></textarea>
             </div>
             <div>
               <Label>Apply Link</Label>

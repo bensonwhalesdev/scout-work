@@ -11,6 +11,7 @@ const PostaJob = () => {
   };
 
   const [title, setTitle] = useState('');
+  const [company, setCompany] = useState('')
   const [location, setLocation] = useState('');
   const [region, setRegion] = useState('');
   const [jobType, setJobType] = useState('');
@@ -29,6 +30,7 @@ const PostaJob = () => {
 
     const jobData = {
       title,
+      company,
       location,
       region,
       jobType,
@@ -56,7 +58,8 @@ const PostaJob = () => {
           </div>
 
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <div>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
               <label className="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
               <input
                 type="text"
@@ -65,6 +68,17 @@ const PostaJob = () => {
                 placeholder="Enter job title"
                 className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm"
               />
+              </div>
+              <div className="flex-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Company's Name</label>
+                <input
+                type="text"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                placeholder="Enter Company's Name"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm"
+              />
+              </div>
             </div>
 
             <div className="flex flex-col md:flex-row gap-4">
@@ -173,7 +187,7 @@ const PostaJob = () => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm h-32"
-                placeholder="Describe the job responsibilities and requirements"
+                placeholder="Describe the job responsibilities and requirements 'Min 10 characters'"
               ></textarea>
             </div>
 

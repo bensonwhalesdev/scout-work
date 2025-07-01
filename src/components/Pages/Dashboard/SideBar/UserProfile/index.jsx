@@ -7,7 +7,7 @@ const UserProfile = () => {
 const { user, loading, error } = useGetUserStore();
 
   if (loading) return <p className="text-center mt-10">Loading user...</p>;
-  // if (setError) return <p className="text-center text-red-500 mt-10">{setError}</p>;
+  if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-2xl mt-10">

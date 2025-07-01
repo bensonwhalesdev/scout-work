@@ -7,6 +7,7 @@ const useGetUserJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
 
   const fetchJobs = async () => {
     try {
