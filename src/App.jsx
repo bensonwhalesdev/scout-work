@@ -5,12 +5,15 @@ import Authpage from "./components/Pages/(AuthPage)";
 import AuthTabs from "./components/Pages/(AuthPage)/Auth";
 import Dashboard from "./components/Pages/Dashboard";
 import NotFound from "./components/Pages/(404Page)";
-import FreelancerDashboard from "./components/Pages/FreelanceDashboard";
 import PostaJob from "./components/Pages/Dashboard/SideBar/PostAJob";
 import ManageJobs from "./components/Pages/Dashboard/SideBar/ManageJobs";
 import JobDetails from "./components/Pages/Dashboard/SideBar/ManageJobs/JobDetails.jsx";
 import DashboardLayout from "./components/Pages/Dashboard/DashboardLayout";
 import ProfileTabs from "./components/Pages/Dashboard/SideBar/UserProfile/ProfileTabs";
+import FreelancerDashboardLayout from "./components/Pages/FreelanceDashboard/LayOut";
+import FreelancerDashboard from "./components/Pages/FreelanceDashboard";
+import BrowseJobs from "./components/Pages/FreelanceDashboard/Sidebar/BrowseJobs";
+import ApplyJobForm from "./components/Pages/FreelanceDashboard/Sidebar/JobApply";
 
 const App = createBrowserRouter([
   {
@@ -36,7 +39,14 @@ const App = createBrowserRouter([
   },
   {
     path: "/freelancerdashboard",
-    children: [{ index: true, Component: FreelancerDashboard }]
+    Component: FreelancerDashboardLayout,
+    children: [
+      { index: true, Component: FreelancerDashboard },
+      { path: "browsejobs", Component: BrowseJobs },
+      { path: "jobdetails/:id", Component: JobDetails },
+      { path: "applyjob/:id", Component: ApplyJobForm}
+      
+    ]
   },
   {
     path: "*",

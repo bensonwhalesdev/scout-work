@@ -1,81 +1,97 @@
 import useGetUserStore from '@/store/useGetUserStore';
-import React, { useState } from 'react';
+import React from 'react';
 import useGetUserJobs from './SideBar/ManageJobs/Hook/useGetUserJobs';
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from 'date-fns';
 import { Link } from 'react-router-dom';
+import { Briefcase, Eye, Users } from 'lucide-react';
 
 const Dashboard = () => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const { user } = useGetUserStore()
-  const { jobs  } = useGetUserJobs();
-
-  const toggleSidebar = () => {
-    setIsMobileSidebarOpen(!isMobileSidebarOpen);
-  };
+  const { user } = useGetUserStore();
+  const { jobs } = useGetUserJobs();
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <main className="flex-1">
-        <div className="p-6">
-          <h1 className="text-2xl font-bold text-gray-800">Hi, {user?.firstName}</h1>
-          <p className="text-gray-500 mb-6">We are glad to see you!</p>
+    <div className="flex min-h-screen bg-gradient-to-br from-green-50 to-white px-4 md:px-6 py-6">
+      <main className="w-full">
+        {/* Welcome Message */}
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Hi, {user?.firstName}</h1>
+          <p className="text-gray-600 text-sm md:text-base">We're excited to see what you'll achieve today!</p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded shadow p-4 hover:bg-green-400 hover:text-white border-l-4 border-green-400 hover:border-blue-500 transition duration-300">
-              <p className="text-sm font-semibold  mb-2">Active Job Listings</p>
-              <p className="text-3xl font-bold">{jobs.length}</p>
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-10">
+          <StatCard
+            title="Active Job Listings"
+            value={jobs.length}
+            icon={<Briefcase className="text-green-500" />}
+            borderColor="border-green-400"
+            gradient="from-green-100 to-green-200"
+          />
+          <StatCard
+            title="Total Job Views"
+            value={0}
+            icon={<Eye className="text-purple-500" />}
+            borderColor="border-purple-400"
+            gradient="from-purple-100 to-purple-200"
+          />
+          <StatCard
+            title="Total Applications"
+            value={0}
+            icon={<Users className="text-yellow-500" />}
+            borderColor="border-yellow-400"
+            gradient="from-yellow-100 to-yellow-200"
+          />
+        </div>
+
+        {/* Lower Panels */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          {/* Recent Activities */}
+          <div className="bg-white rounded-xl shadow-md p-4 sm:p-5 md:p-6 border border-gray-200">
+            <div className="border-b border-green-400 pb-3 mb-4">
+              <h2 className="text-lg md:text-xl font-semibold text-gray-800">Recent Activities</h2>
             </div>
-            <div className="bg-white rounded shadow p-4 hover:bg-green-400 hover:text-white border-l-4 border-purple-400 hover:border-blue-500 transition duration-300">
-              <p className="text-sm font-semibold mb-2">Total Jobs Views</p>
-              <p className="text-3xl font-bold">0</p>
-            </div>
-            <div className="bg-white rounded shadow p-4 hover:bg-green-400 hover:text-white border-l-4 border-yellow-400 hover:border-blue-500 transition duration-300">
-              <p className="text-sm font-semibold mb-2">Total Applications</p>
-              <p className="text-3xl font-bold">0</p>
+            <div className="space-y-4">
+              {jobs.length === 0 ? (
+                <p className="text-gray-500 text-sm">No recent activity</p>
+              ) : (
+                jobs
+                  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                  .slice(0, 3)
+                  .map((job) => (
+                    <div key={job._id} className="bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg border border-gray-100">
+                      <Link to={`/dashboard/managejobs/${job._id}`}>
+                        <p className="text-sm text-gray-700">
+                          Task <span className="text-green-600 font-semibold">{job.title}</span> was created.
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}
+                        </p>
+                      </Link>
+                    </div>
+                  ))
+              )}
             </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl shadow p-4 hover:shadow-xl">
-              <div className="flex justify-between items-center mb-4 border-b-2 border-green-400">
-                <h2 className="text-lg font-semibold text-gray-800">Recent Activities</h2>
-              </div>
-              <div className="text-sm space-y-4 bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-               {jobs.length === 0 ? (
-               <p className="text-gray-500">No recent activity</p>
-                ) : (
-                 jobs
-                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                 .slice(0, 3)
-                 .map((job) => (
-                 <div key={job._id} className="flex items-start justify-between">
-                  <div>
-                   <Link to={`/dashboard/managejobs/${job._id}`}>
-                   <p>Task{" "}<span className="text-green-600 font-semibold">{job.title}</span>{" "}was created.</p>
-                   </Link>
-                   <p className="text-xs text-gray-500">{formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</p>
-                </div>
-              </div>)))}
-             </div>
+          {/* Your Listings */}
+          <div className="bg-white rounded-xl shadow-md p-4 sm:p-5 md:p-6 border border-gray-200">
+            <div className="border-b border-green-400 pb-3 mb-4">
+              <h2 className="text-lg md:text-xl font-semibold text-gray-800">Your Listings</h2>
             </div>
-            <div className="bg-white rounded-xl shadow p-4 hover:shadow-xl">
-              <h2 className="text-lg font-semibold text-gray-800 mb-4 border-b-2 border-green-400">Your Listings</h2>
-              <div className="text-sm space-y-4 bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-              <p className="text-base font-semibold text-gray-800 border-b pb-2">Basic</p>
-              { jobs.length === 0 ? (
-                <p className="text-gray-500">You have not posted a job yet</p>
-                 ) : (
+            <div className="space-y-3">
+              <p className="text-sm font-semibold text-gray-600">Basic</p>
+              {jobs.length === 0 ? (
+                <p className="text-gray-500 text-sm">You have not posted any job yet</p>
+              ) : (
                 jobs.map((job) => (
-                 <div key={job._id} className="p-3 rounded-md bg-gray-50 hover:bg-gray-100 transition border border-gray-100">
-                  <Link to={`/dashboard/managejobs/${job._id}`}>
-                  <p className="font-medium text-green-700">{job.title}</p>
+                  <Link to={`/dashboard/managejobs/${job._id}`} key={job._id}>
+                    <div className="p-4 bg-gray-50 hover:bg-gray-100 transition rounded-lg border border-gray-100">
+                      <p className="font-medium text-green-700">{job.title}</p>
+                      <p className="text-xs text-gray-600">{job.tags}</p>
+                    </div>
                   </Link>
-                  <p className="text-gray-600 text-xs">{job.tags}</p>
-              </div>))
-              )
-              }
-             </div>
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -83,5 +99,18 @@ const Dashboard = () => {
     </div>
   );
 };
+
+// Reusable StatCard Component
+const StatCard = ({ title, value, icon, borderColor, gradient }) => (
+  <div
+    className={`bg-gradient-to-br ${gradient} p-4 sm:p-5 md:p-6 rounded-xl shadow-md border-l-4 ${borderColor} transition transform hover:scale-[1.02]`}
+  >
+    <div className="flex items-center justify-between mb-2">
+      <p className="text-sm font-medium text-gray-600">{title}</p>
+      {icon}
+    </div>
+    <h3 className="text-2xl md:text-3xl font-bold text-gray-800">{value}</h3>
+  </div>
+);
 
 export default Dashboard;

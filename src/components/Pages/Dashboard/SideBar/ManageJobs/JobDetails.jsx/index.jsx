@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import {Dialog,DialogContent,DialogHeader,DialogTitle,} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,6 +8,8 @@ import { toast } from "sonner";
 import useGetUserJobs from "../Hook/useGetUserJobs";
 import { apiClient } from "@/lib/client";
 import {MapPin,Globe,Briefcase,Tag,DollarSign,Laptop,Building,ExternalLink,Pencil,Trash2, Building2,} from "lucide-react";
+import useGetUserStore from "@/store/useGetUserStore";
+import ReuseableButton from "@/components/Reuseables/ResuableButton";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -19,7 +21,10 @@ const JobDetails = () => {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [formData, setFormData] = useState({});
+  const { user } = useGetUserStore();
 
+  console.log(job);
+  
   useEffect(() => {
     const fetchJob = async () => {
       try {
@@ -100,20 +105,18 @@ const JobDetails = () => {
       <div className="mt-6 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
         <p className="font-semibold text-lg mb-2">Description:</p>
         <p className="whitespace-pre-line text-gray-800 leading-relaxed">{job.description}</p>
-
-        {job.applyLink && (
-          <p className="mt-4 flex items-center gap-2">
-            <ExternalLink className="w-5 h-5 text-blue-600" />
-            <a href={job.applyLink} target="_blank" rel="noopener noreferrer"className="text-blue-600 underline"
-            >Apply Here</a>
-          </p>
-        )}
+        <p className="mt-4 text-blue-500 underline"><a href="">{job.applyLink}</a></p>
+        
+        <Link to={`/freelancerdashboard/applyjob/${job._id}`}>
+        <ReuseableButton classStyle="bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all duration-300 ease-in-out mt-4 focus:outline-none focus:ring-2 focus:ring-green-300 cursor-pointer" text="Apply Here" />
+        </Link>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 mt-6">
-        <Button onClick={() => setShowEditDialog(true)} className="bg-yellow-500 hover:bg-yellow-600 flex items-center gap-2"><Pencil className="w-4 h-4" />Edit</Button>
-        <Button onClick={() => setShowConfirmDialog(true)} className="bg-red-600 hover:bg-red-700 flex items-center gap-2"><Trash2 className="w-4 h-4" />Delete</Button>
-      </div>
+        {user?._id === job?.user && (
+         <div className="flex flex-col sm:flex-row gap-4 mt-6">
+           <Button onClick={() => setShowEditDialog(true)} className="bg-yellow-500 hover:bg-yellow-600 flex items-center gap-2"><Pencil className="w-4 h-4" />Edit</Button>
+           <Button onClick={() => setShowConfirmDialog(true)} className="bg-red-600 hover:bg-red-700 flex items-center gap-2"><Trash2 className="w-4 h-4" />Delete</Button>
+         </div>)}
 
       {/* Confirm Delete Dialog */}
       <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
