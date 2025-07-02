@@ -14,6 +14,9 @@ import FreelancerDashboardLayout from "./components/Pages/FreelanceDashboard/Lay
 import FreelancerDashboard from "./components/Pages/FreelanceDashboard";
 import BrowseJobs from "./components/Pages/FreelanceDashboard/Sidebar/BrowseJobs";
 import ApplyJobForm from "./components/Pages/FreelanceDashboard/Sidebar/JobApply";
+import Bids from "./components/Pages/FreelanceDashboard/Sidebar/Bids";
+import AllUsersGrid from "./components/Pages/FreelanceDashboard/Sidebar/Employers";
+import UserProfileDetails from "./components/Pages/FreelanceDashboard/Sidebar/Employers/ViewProfile";
 
 const App = createBrowserRouter([
   {
@@ -44,7 +47,10 @@ const App = createBrowserRouter([
       { index: true, Component: FreelancerDashboard },
       { path: "browsejobs", Component: BrowseJobs },
       { path: "jobdetails/:id", Component: JobDetails },
-      { path: "applyjob/:id", Component: ApplyJobForm}
+      { path: "applyjob/:id", Component: ApplyJobForm},
+      { path: "bids", Component: Bids},
+      { path: "employers", Component: AllUsersGrid},
+      { path: "employers/:id", Component: UserProfileDetails}
       
     ]
   },

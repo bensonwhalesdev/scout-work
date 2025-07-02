@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { apiClient } from "@/lib/client";
 import { Input } from "@/components/ui/input";
@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import useGetUserStore from "@/store/useGetUserStore";
+
+
 
 const ApplyJobForm = () => {
   const { id: jobId } = useParams();
@@ -21,6 +23,7 @@ const ApplyJobForm = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,7 +46,8 @@ const ApplyJobForm = () => {
       });
 
       toast.success("Application sent successfully!");
-      setFormData((prev) => ({ ...prev, message: "", resume: null }));
+      setFormData((prev) => ({ ...prev, resume: null }));
+      navigate("/freelancerdashboard/browsejobs");
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to submit application.");
     } finally {

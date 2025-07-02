@@ -13,8 +13,6 @@ const BrowseJobs = () => {
       try {
         const res = await apiClient.get("/job");
         setJobs(res.data);
-        console.log(res.data);
-        
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch jobs");
       } finally {
@@ -26,7 +24,7 @@ const BrowseJobs = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-green-50 py-10 px-4 md:px-12">
+    <div className="min-h-screen bg-[#E4FDEC] rounded py-10 px-4 md:px-12">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">Explore Job Opportunities</h1>
 

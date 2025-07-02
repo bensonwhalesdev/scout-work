@@ -23,8 +23,6 @@ const JobDetails = () => {
   const [formData, setFormData] = useState({});
   const { user } = useGetUserStore();
 
-  console.log(job);
-  
   useEffect(() => {
     const fetchJob = async () => {
       try {
@@ -58,7 +56,7 @@ const JobDetails = () => {
   if (!job) return <p className="p-6 text-red-500">Job not found</p>;
 
   return (
-    <div className="min-h-screen bg-white p-6 md:p-10 max-w-5xl mx-auto">
+    <div className="min-h-screen bg-[#E4FDEC] rounded p-6 md:p-10 max-w-5xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-extrabold text-green-600 mb-6 flex items-center gap-2">
         {job.title}
       </h1>
