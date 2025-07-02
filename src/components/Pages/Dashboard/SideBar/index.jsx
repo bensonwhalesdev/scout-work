@@ -66,18 +66,16 @@ const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
       )}
     </div>
           <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 rounded-md cursor-pointer ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
-            <ClipboardList /> {!isCollapsed && 'Browse Freelancers'}
+            <Link className='flex gap-2' to={'/dashboard/freelancers'}><ClipboardList /> {!isCollapsed && 'Browse Freelancers'}</Link>
           </button>
         </div>
 
         <div className={`text-sm mt-8 font-bold ${isCollapsed ? 'hidden' : 'text-green-600'}`}>Account</div>
         <div className="flex flex-col gap-4 mt-2">
-          <Link to={'/dashboard/userprofile'}>
-          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 cursor-pointer ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
-            <Settings /> {!isCollapsed && 'My Profile'}
+          <button className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 cursor-pointer rounded-md ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
+            <Link className='flex gap-2' to={'/dashboard/userprofile'}><Settings /> {!isCollapsed && 'My Profile'}</Link>
           </button>
-          </Link>
-          <button onClick={logout} className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
+          <button onClick={logout} className={`flex items-center gap-2 px-1 py-2 hover:bg-green-300 rounded-md cursor-pointer ${isCollapsed ? 'justify-center' : 'text-gray-600'}`}>
             <LogOut /> {!isCollapsed && 'Logout'}
           </button>
         </div>

@@ -75,11 +75,11 @@ const FreelancerDashboard = () => {
       <div className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/30 mb-8">
         <h2 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Link to={'/freelancerdashboard/browsejobs'}>
+          
           <button className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-3 rounded-lg font-medium shadow cursor-pointer hover:scale-105 transition">
-            Apply to New Jobs
+            <Link to={'/freelancerdashboard/browsejobs'}> Apply to New Jobs</Link>
           </button>
-          </Link>
+        
           <button className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-4 py-3 rounded-lg font-medium shadow hover:scale-105 transition">
             Update Portfolio
           </button>

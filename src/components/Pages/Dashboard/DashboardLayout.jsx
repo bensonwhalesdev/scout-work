@@ -4,6 +4,7 @@ import HeaderBar from "./HeaderBar";
 import Sidebar from "./SideBar";
 import { apiClient } from "@/lib/client";
 import useGetUserStore from "@/store/useGetUserStore";
+import LayoutFooter from "@/components/Reuseables/LayoutFooter";
 
 
 const DashboardLayout = () => {
@@ -31,6 +32,7 @@ const DashboardLayout = () => {
       fetchUser();
     }, []);
   return (
+    <>
     <div className="flex flex-col min-h-screen bg-gray-50">
       <HeaderBar toggleSidebar={toggleSidebar} />
       <div className="flex flex-1">
@@ -40,6 +42,9 @@ const DashboardLayout = () => {
         </main>
       </div>
     </div>
+    <LayoutFooter />
+    </>
+
   );
 };
 

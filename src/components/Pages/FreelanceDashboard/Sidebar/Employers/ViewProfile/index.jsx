@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiClient } from "@/lib/client";
 import { Mail, Phone, Briefcase, Info } from "lucide-react";
+import PreLoad from "@/components/Reuseables/PreLoad";
 
 const UserProfileDetails = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ const UserProfileDetails = () => {
     fetchUser();
   }, [id]);
 
-  if (loading) return <p className="text-center mt-10 text-gray-500">Loading profile...</p>;
+  if (loading) return <div className="flex justify-center items-center mt-50" ><PreLoad /></div>;
   if (!userDetails) return <p className="text-center mt-10 text-red-500">User not found.</p>;
 
   return (
@@ -37,13 +38,13 @@ const UserProfileDetails = () => {
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-bold text-gray-800">{userDetails.firstName}</h2>
           <p className="flex items-center text-gray-600 gap-2 mt-2">
-            <Phone className="w-4 h-4 text-green-600" /> {userDetails.phone}
+            <Phone className="w-4 h-4 text-green-600" /> {userDetails.phone || 'No Phone provided'}
           </p>
           <p className="flex items-center text-gray-600 gap-2 mt-1">
             <Mail className="w-4 h-4 text-green-600" /> {userDetails.email}
           </p>
           <p className="flex items-center text-gray-600 gap-2 mt-1">
-            <Briefcase className="w-4 h-4 text-green-600" /> {userDetails.position}
+            <Briefcase className="w-4 h-4 text-green-600" /> {userDetails.position || 'No Position provided'}
           </p>
         </div>
       </div>

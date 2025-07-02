@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Briefcase, MapPin, Clock } from "lucide-react";
 import { apiClient } from "@/lib/client";
 import { Link } from "react-router-dom";
+import PreLoad from "@/components/Reuseables/PreLoad";
 
 const BrowseJobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -29,7 +30,8 @@ const BrowseJobs = () => {
         <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">Explore Job Opportunities</h1>
 
         {loading ? (
-          <p className="text-center text-gray-500">Loading jobs...</p>
+          <div className="flex justify-center items-center mt-50" ><PreLoad /></div>
+        
         ) : error ? (
           <p className="text-center text-red-500">{error}</p>
         ) : jobs.length === 0 ? (

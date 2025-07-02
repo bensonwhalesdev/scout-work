@@ -4,6 +4,7 @@ import FreeLancerHeader from "./Headerbar";
 import { Outlet } from "react-router-dom";
 import useGetUserStore from "@/store/useGetUserStore";
 import { apiClient } from "@/lib/client";
+import LayoutFooter from "@/components/Reuseables/LayoutFooter";
 
 const FreelancerDashboardLayout = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -31,6 +32,7 @@ const FreelancerDashboardLayout = () => {
   }, []);
 
   return (
+    <>
     <div className="flex flex-col min-h-screen bg-gray-50">
       <FreeLancerHeader toggleSidebar={toggleSidebar} />
       <div className="flex flex-1">
@@ -44,6 +46,8 @@ const FreelancerDashboardLayout = () => {
         </main>
       </div>
     </div>
+    <LayoutFooter />
+    </>
   );
 };
 
