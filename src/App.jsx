@@ -20,12 +20,16 @@ import UserProfileDetails from "./components/Pages/FreelanceDashboard/Sidebar/Em
 import FreelancerProfile from "./components/Pages/FreelanceDashboard/Sidebar/FreelancerProfile";
 import ViewFreelancer from "./components/Pages/Dashboard/SideBar/UserProfile/ViewFreelancer";
 import EmployerApplications from "./components/Pages/Dashboard/SideBar/EmployerApplications";
+import AboutPage from "./components/Pages/LandingPage/About";
 
 const App = createBrowserRouter([
   {
     path: "/",
     Component: LandingPage,
-    children: [{ index: true, Component: Home }],
+    children: [
+      { index: true, Component: Home },
+      { path: "about", Component: AboutPage },
+    ],
   },
   {
     path: "/auth",

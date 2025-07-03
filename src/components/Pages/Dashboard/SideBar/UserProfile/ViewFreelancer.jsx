@@ -46,7 +46,7 @@ const ViewFreelancer = () => {
         {/* Avatar and Header */}
         <div className="flex flex-col md:flex-row items-center gap-8 relative">
           <img
-            src={freelancer.avatar || "/avatar.avif"}
+            src={freelancer.avatar || "/avatar.jpeg"}
             alt={freelancer.firstName}
             className="w-36 h-36 rounded-full border-4 border-green-500 object-cover shadow-lg hover:scale-105 transition-transform"
           />

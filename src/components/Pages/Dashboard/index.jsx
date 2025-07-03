@@ -4,10 +4,12 @@ import useGetUserJobs from './SideBar/ManageJobs/Hook/useGetUserJobs';
 import { formatDistanceToNow } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { Briefcase, Eye, Users } from 'lucide-react';
+import useEmployerApplications from './SideBar/EmployerApplications/Hook/useEmployerApplications';
 
 const Dashboard = () => {
   const { user } = useGetUserStore();
   const { jobs } = useGetUserJobs();
+  const { applications } = useEmployerApplications()
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-green-50 to-white px-4 md:px-6 py-6">
@@ -36,7 +38,7 @@ const Dashboard = () => {
           />
           <StatCard
             title="Total Applications"
-            value={0}
+            value={applications.length}
             icon={<Users className="text-yellow-500" />}
             borderColor="border-yellow-400"
             gradient="from-yellow-100 to-yellow-200"

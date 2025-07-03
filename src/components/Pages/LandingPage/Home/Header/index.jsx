@@ -21,7 +21,7 @@ const Header = () => {
           <div className="hidden md:flex border-gray-300 border-l border-r px-10 py-2">
             <ul className="flex gap-4 font-bold text-white">
               <Link to="/"><li>Home</li></Link>
-              <li>About</li>
+              <Link to="about"><li>About</li></Link>
               <li>Employer</li>
               <li>Freelancer</li>
             </ul>
