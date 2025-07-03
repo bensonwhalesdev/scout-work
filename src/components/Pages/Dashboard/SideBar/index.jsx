@@ -61,6 +61,9 @@ const Sidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
             <Link to={'/dashboard/managejobs'}>
             <li onClick={toggleDropdown} className="px-4 py-2 hover:bg-green-300 cursor-pointer">Manage Jobs</li>
             </Link>
+            <Link to={'/dashboard/applications'}>
+            <li onClick={toggleDropdown} className="px-4 py-2 hover:bg-green-300 cursor-pointer">Applications</li>
+            </Link>
           </ul>
         </div>
       )}

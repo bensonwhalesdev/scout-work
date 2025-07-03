@@ -13,6 +13,7 @@ import useGetUserStore from "@/store/useGetUserStore";
 const ApplyJobForm = () => {
   const { id: jobId } = useParams();
   const { user } = useGetUserStore();
+  
   const [formData, setFormData] = useState({
     name: user?.firstName || "",
     email: user?.email || "",
@@ -20,6 +21,7 @@ const ApplyJobForm = () => {
     message: "",
     resume: null,
     jobId,
+    userId: user?._id || "",
   });
 
   const [loading, setLoading] = useState(false);

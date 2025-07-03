@@ -19,6 +19,7 @@ import AllUsersGrid from "./components/Pages/FreelanceDashboard/Sidebar/Employer
 import UserProfileDetails from "./components/Pages/FreelanceDashboard/Sidebar/Employers/ViewProfile";
 import FreelancerProfile from "./components/Pages/FreelanceDashboard/Sidebar/FreelancerProfile";
 import ViewFreelancer from "./components/Pages/Dashboard/SideBar/UserProfile/ViewFreelancer";
+import EmployerApplications from "./components/Pages/Dashboard/SideBar/EmployerApplications";
 
 const App = createBrowserRouter([
   {
@@ -39,6 +40,7 @@ const App = createBrowserRouter([
       { path: "postajob", Component:  PostaJob },
       { path: "managejobs", Component: ManageJobs},
       { path: "managejobs/:id", Component: JobDetails },
+      { path: "applications", Component: EmployerApplications },
       { path: "userprofile", Component: ProfileTabs},
       { path: "freelancers", Component: AllUsersGrid},
       { path: "freelancers/:id", Component: ViewFreelancer}
