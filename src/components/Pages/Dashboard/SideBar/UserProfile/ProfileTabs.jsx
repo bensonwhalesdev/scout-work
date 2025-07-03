@@ -31,7 +31,7 @@ const ProfileTabs = () => {
         {activeTab === 'settings' && (
           <div className="space-y-8">
             <EditProfileForm />
-            <ChangePasswordForm />
+            {/* <ChangePasswordForm /> */}
           </div>
         )}
       </div>

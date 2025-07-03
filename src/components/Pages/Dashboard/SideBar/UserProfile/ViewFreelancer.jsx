@@ -10,6 +10,7 @@ import {
   Star,
   BadgeCheck,
 } from "lucide-react";
+import PreLoad from "@/components/Reuseables/PreLoad";
 
 const ViewFreelancer = () => {
   const { id } = useParams();
@@ -32,7 +33,7 @@ const ViewFreelancer = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="text-center py-20 text-gray-600 animate-pulse">Loading profile...</div>;
+    return <div className="flex justify-center items-center mt-50" ><PreLoad /></div>;
   }
 
   if (!freelancer) {

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { apiClient } from "@/lib/client";
+import useGetUserStore from "@/store/useGetUserStore";
 
 const ChangePasswordForm = () => {
+  const { user } = useGetUserStore()
   const [formData, setFormData] = useState({
     currentPassword: "",
     newPassword: "",
@@ -13,9 +15,11 @@ const ChangePasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await apiClient.patch("/auth/change-password", formData);
+      await apiClient.patch(`/user/${user._id}`, formData);
       alert("Password updated successfully");
     } catch (err) {
+      console.log(error.message);
+      
       alert("Failed to change password");
     }
   };

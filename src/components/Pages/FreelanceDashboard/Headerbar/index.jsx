@@ -26,7 +26,7 @@ const FreeLancerHeader = ({ toggleSidebar }) => {
       </div>
       <Link to={'/freelancerdashboard/userprofile'}>
       <div className="flex items-center gap-2">
-        <img src={user?.avatar || '/avatar.avif' } alt="avatar" className="w-8 h-8 rounded-full border-1 border-green-500" />
+        <img src={user?.avatar || '/avatar.jpeg' } alt="avatar" className="w-8 h-8 rounded-full border-1 border-green-500" />
         <span className="text-sm">Hi, {user?.firstName || "User"}</span>
       </div>
       </Link>

@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { Mail, Phone, User, Briefcase, Info } from "lucide-react";
-import { apiClient } from "@/lib/client";
 import useGetUserStore from "@/store/useGetUserStore";
+import PreLoad from "@/components/Reuseables/PreLoad";
 
 const UserProfile = () => {
 const { user, loading, error } = useGetUserStore();
 
-  if (loading) return <p className="text-center mt-10">Loading user...</p>;
+  if (loading) return <div className="flex justify-center items-center mt-50" ><PreLoad /></div>;
   if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-2xl mt-10">
       <div className="flex flex-col md:flex-row items-center gap-6">
         <img
-          src={user?.avatar || "/avatar.avif"}
+          src={user?.avatar || "/avatar.jpeg"}
           alt="Profile"
           className="w-32 h-32 rounded-full object-cover shadow-md border-2 border-green-500"
         />
