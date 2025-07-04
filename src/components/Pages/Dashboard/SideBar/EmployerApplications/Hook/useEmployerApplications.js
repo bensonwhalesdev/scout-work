@@ -9,6 +9,7 @@ const useEmployerApplications = () => {
   const { jobs } = useGetUserJobs();
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchApplications = async () => {

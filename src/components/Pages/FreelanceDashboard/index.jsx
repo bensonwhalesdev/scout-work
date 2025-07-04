@@ -42,7 +42,7 @@ const FreelancerDashboard = () => {
             <p className="text-sm text-gray-500">Active Jobs</p>
               <Briefcase className="text-indigo-500" />
            </div>
-             <h3 className="text-2xl font-bold text-gray-800">5</h3>
+             <h3 className="text-2xl font-bold text-gray-800">0</h3>
          </div>
 
           <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-5 border border-white/30 hover:scale-105 transition-transform">
@@ -50,7 +50,7 @@ const FreelancerDashboard = () => {
            <p className="text-sm text-gray-500">Completed</p>
             <CheckCircle className="text-green-500" />
            </div>
-           <h3 className="text-2xl font-bold text-gray-800">12</h3>
+           <h3 className="text-2xl font-bold text-gray-800">0</h3>
          </div>
 
          <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-5 border border-white/30 hover:scale-105 transition-transform">
@@ -66,7 +66,7 @@ const FreelancerDashboard = () => {
          <p className="text-sm text-gray-500">Profile Views</p>
           <TrendingUp className="text-pink-500" />
          </div>
-        <h3 className="text-2xl font-bold text-gray-800">238</h3>
+        <h3 className="text-2xl font-bold text-gray-800">0</h3>
         </div>
         </div>
 

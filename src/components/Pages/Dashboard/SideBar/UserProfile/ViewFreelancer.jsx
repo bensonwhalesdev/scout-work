@@ -67,6 +67,9 @@ const ViewFreelancer = () => {
               {freelancer.skill}
             </p>
           </div>
+          <div>
+            <button className="bg-green-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-green-600 transition-colors cursor-pointer" >Offer Job</button>
+          </div>
         </div>
 
         {/* Grid Details */}

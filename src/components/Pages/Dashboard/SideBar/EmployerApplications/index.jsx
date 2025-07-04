@@ -4,6 +4,7 @@ import PreLoad from "@/components/Reuseables/PreLoad";
 import useEmployerApplications from "./Hook/useEmployerApplications";
 import { useState } from "react";
 import MessageWithToggle from "./MessageToogle";
+import OfferJobModal from "./OfferjobModal";
 
 const EmployerApplications = () => {
   const { applications, loading, getJobTitle, formatDate } = useEmployerApplications();
@@ -45,10 +46,11 @@ const EmployerApplications = () => {
             <div className="mt-4 flex flex-wrap gap-3">
               {app.resume && (
                 <a href={`http://localhost:4000/${app.resume}`} target="_blank"rel="noopener noreferrer"
-                  className="px-4 py-2 text-sm bg-green-500 text-white rounded-md hover:bg-green-600 transition">View Resume</a>)}
+                  className="px-4 py-2 text-sm bg-green-500 text-white rounded-md hover:bg-green-600 transition cursor-pointer">View Resume</a>)}
               {app.userId && (
-                <Link to={`/dashboard/freelancers/${app.userId}`} className="px-4 py-2 text-sm border border-green-600 text-green-700 rounded-md hover:bg-green-50 transition">View Profile</Link>
+                <Link to={`/dashboard/freelancers/${app.userId}`} className="px-4 py-2 text-sm border border-green-600 text-green-700 rounded-md hover:bg-green-50 transition cursor-pointer">View Profile</Link>
               )}
+              <OfferJobModal freelancerId={app.userId} />
             </div>
           </div>
         ))}
