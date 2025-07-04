@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BriefcaseBusiness } from "lucide-react";
 import useGetUserJobs from "./Hook/useGetUserJobs";
+import PreLoad from "@/components/Reuseables/PreLoad";
 
 const ManageJobs = () => {
   const { jobs, loading, error } = useGetUserJobs();
@@ -19,14 +20,14 @@ const ManageJobs = () => {
           </div>
 
           {loading ? (
-            <p className="text-gray-500">Loading jobs...</p>
+            <div className="flex justify-center items-center mt-30" ><PreLoad /></div>
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : jobs.length === 0 ? (
             <p className="text-gray-500">You haven't posted any jobs yet.</p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {jobs.map((job) => (
+            {jobs.map((job) => (
                 <div
                   key={job._id}
                   className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition flex flex-col justify-between"
@@ -38,15 +39,12 @@ const ManageJobs = () => {
                     <p className="text-xs text-black">{job.jobType}</p>
                   </div>
 
-                  <button
-                    onClick={() => navigate(`/dashboard/managejobs/${job._id}`)}
-                    className="bg-green-400 text-white px-3 py-1.5 rounded-md mt-4 hover:bg-green-500 transition text-sm"
-                  >
-                    View Job
-                  </button>
+                  <button onClick={() => navigate(`/dashboard/managejobs/${job._id}`)}
+                    className="bg-green-400 text-white px-3 py-1.5 rounded-md mt-4 cursor-pointer hover:bg-green-500 transition text-sm">View Job</button>
                 </div>
               ))}
             </div>
+            
           )}
         </div>
       </main>

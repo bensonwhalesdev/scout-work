@@ -62,6 +62,10 @@ const ViewFreelancer = () => {
               <MapPin className="w-4 h-4" />
               {freelancer.location || "Unknown Location"}
             </p>
+            <p className="flex items-center gap-2">
+              <Star className="w-4 h-4 text-yellow-500" />
+              {freelancer.skill}
+            </p>
           </div>
         </div>
 
@@ -70,7 +74,7 @@ const ViewFreelancer = () => {
           <Info label="Email" icon={<Mail className="w-4 h-4" />} value={freelancer.email} />
           <Info label="Phone" icon={<Phone className="w-4 h-4" />} value={freelancer.phone} />
           <Info label="Experience" icon={<Briefcase className="w-4 h-4" />} value={freelancer.experience} />
-          <Info label="Skill" icon={<Star className="w-4 h-4 text-yellow-500" />} value={freelancer.skill} />
+          {/* <Info label="Skill" icon={<Star className="w-4 h-4 text-yellow-500" />} value={freelancer.skill} /> */}
           <Info label="Certification" value={freelancer.certification} />
           <Info label="Education" icon={<GraduationCap className="w-4 h-4" />} value={freelancer.education} />
           <Info label="Rate (₦/hr)" value={`₦${freelancer.rate || 0}`} />

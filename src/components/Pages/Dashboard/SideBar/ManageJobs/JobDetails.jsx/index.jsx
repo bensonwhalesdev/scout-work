@@ -10,6 +10,7 @@ import { apiClient } from "@/lib/client";
 import {MapPin,Globe,Briefcase,Tag,DollarSign,Laptop,Building,ExternalLink,Pencil,Trash2, Building2,} from "lucide-react";
 import useGetUserStore from "@/store/useGetUserStore";
 import ReuseableButton from "@/components/Reuseables/ResuableButton";
+import PreLoad from "@/components/Reuseables/PreLoad";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -52,7 +53,7 @@ const JobDetails = () => {
     setJob((prev) => ({ ...prev, ...formData }));
   };
 
-  if (loading) return <p className="p-6 text-gray-500">Loading...</p>;
+  if (loading) return <div className="flex justify-center items-center mt-50" ><PreLoad /></div>;
   if (!job) return <p className="p-6 text-red-500">Job not found</p>;
 
   return (

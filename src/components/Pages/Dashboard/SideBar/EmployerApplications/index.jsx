@@ -2,10 +2,12 @@ import { Mail, FileText, User, CalendarDays } from "lucide-react";
 import { Link } from "react-router-dom";
 import PreLoad from "@/components/Reuseables/PreLoad";
 import useEmployerApplications from "./Hook/useEmployerApplications";
+import { useState } from "react";
+import MessageWithToggle from "./MessageToogle";
 
 const EmployerApplications = () => {
   const { applications, loading, getJobTitle, formatDate } = useEmployerApplications();
-
+ 
   if (loading) return <div className="flex justify-center items-center mt-20"><PreLoad /></div>;
 
   if (applications.length === 0)
@@ -37,10 +39,7 @@ const EmployerApplications = () => {
                 <CalendarDays className="w-4 h-4 mr-2 text-green-500" />
                 <span>Date Applied: <span className="font-semibold text-gray-700">{formatDate(app.createdAt)}</span></span>
               </div>
-              <div className="text-sm text-gray-700">
-                <span className="font-medium text-green-600">Message:</span>{" "}
-                {app.message || "No message provided"}
-              </div>
+              <MessageWithToggle message={app.message} />
             </div>
 
             <div className="mt-4 flex flex-wrap gap-3">

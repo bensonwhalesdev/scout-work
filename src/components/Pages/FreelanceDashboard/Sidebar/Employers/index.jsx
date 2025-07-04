@@ -74,7 +74,7 @@ const AllUsersGrid = () => {
 
               <div className="flex items-center gap-4">
                 <img
-                  src={userdetails.avatar || "/avatar.avif"}
+                  src={userdetails.avatar || "/avatar.jpeg"}
                   alt={userdetails.firstName}
                   className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-md"
                 />

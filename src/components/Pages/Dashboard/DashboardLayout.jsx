@@ -5,6 +5,7 @@ import Sidebar from "./SideBar";
 import { apiClient } from "@/lib/client";
 import useGetUserStore from "@/store/useGetUserStore";
 import LayoutFooter from "@/components/Reuseables/LayoutFooter";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 
 const DashboardLayout = () => {
@@ -39,6 +40,7 @@ const DashboardLayout = () => {
         <Sidebar isCollapsed={isSidebarCollapsed} isMobileOpen={isMobileSidebarOpen} toggleSidebar={toggleSidebar} />
         <main className="flex-1 p-6">
           <Outlet />
+          <BackgroundBeams />
         </main>
       </div>
     </div>
