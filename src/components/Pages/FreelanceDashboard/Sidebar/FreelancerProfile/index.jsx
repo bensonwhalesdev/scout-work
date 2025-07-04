@@ -6,7 +6,7 @@ const tabs = ["Profile", "Settings"];
 
 const FreelancerProfile = () => {
   const [activeTab, setActiveTab] = useState("Profile");
-  const {user, formData, handleChange, handleSubmit,handleAvatarChange } = useFreelancerProfile();
+  const {user, formData, handleChange, handleSubmit,handleAvatarChange, loading } = useFreelancerProfile();
 
   if (!user) {
     return <div className="flex justify-center items-center mt-50" ><PreLoad /></div>;
@@ -80,7 +80,7 @@ const FreelancerProfile = () => {
           </div>
 
           <div className="text-right">
-            <button type="submit" className="px-6 py-2 bg-green-600 text-white rounded-md cursor-pointer hover:bg-green-700 transition">Save Changes</button>
+            <button type="submit" className="px-6 py-2 bg-green-600 text-white rounded-md cursor-pointer hover:bg-green-700 transition">{ loading ? "Saving..." : "Save Changes"}</button>
           </div>
         </form>
       )}

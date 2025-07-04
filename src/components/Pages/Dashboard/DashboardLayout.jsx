@@ -8,6 +8,7 @@ import LayoutFooter from "@/components/Reuseables/LayoutFooter";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 
 
+
 const DashboardLayout = () => {
    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
@@ -40,11 +41,11 @@ const DashboardLayout = () => {
         <Sidebar isCollapsed={isSidebarCollapsed} isMobileOpen={isMobileSidebarOpen} toggleSidebar={toggleSidebar} />
         <main className="flex-1 p-6">
           <Outlet />
-          <BackgroundBeams />
         </main>
       </div>
     </div>
     <LayoutFooter />
+    <BackgroundBeams className="fixed inset-0 pointer-events-none" />
     </>
 
   );

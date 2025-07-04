@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import useGetUserStore from "@/store/useGetUserStore";
 import { apiClient } from "@/lib/client";
 import LayoutFooter from "@/components/Reuseables/LayoutFooter";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const FreelancerDashboardLayout = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -47,6 +48,7 @@ const FreelancerDashboardLayout = () => {
       </div>
     </div>
     <LayoutFooter />
+    <BackgroundBeams className="fixed inset-0 pointer-events-none" />
     </>
   );
 };
