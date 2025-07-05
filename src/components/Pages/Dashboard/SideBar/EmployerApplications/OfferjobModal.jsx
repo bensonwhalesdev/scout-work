@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogTrigger,
@@ -22,21 +22,31 @@ import useGetUserJobs from "../ManageJobs/Hook/useGetUserJobs";
 const OfferJobModal = ({ freelancerId, triggerLabel = "Offer Job" }) => {
   const { user } = useGetUserStore(); // employer
   const { jobs } = useGetUserJobs(); // all jobs posted by employer
+  
 
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({
-    jobId: jobs[0]?._id || "", // default to first job if exists
+    jobId: jobs[0]?._id, // default to first job if exists
     message: "",
   });
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+  if (jobs.length > 0 && !form.jobId) {
+    setForm((prev) => ({
+      ...prev,
+      jobId: jobs[0]._id,
+    }));
+  }
+}, [jobs]);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.jobId || !form.message) return toast.error("All fields required");
-
+    
+    if (!form.jobId || !form.message) return alert("All fields required");
     try {
       setLoading(true);
       await apiClient.post("/joboffer", {

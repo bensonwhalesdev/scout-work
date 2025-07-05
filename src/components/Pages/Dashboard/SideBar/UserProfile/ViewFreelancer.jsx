@@ -11,11 +11,14 @@ import {
   BadgeCheck,
 } from "lucide-react";
 import PreLoad from "@/components/Reuseables/PreLoad";
+import OfferJobModal from "../EmployerApplications/OfferjobModal";
 
 const ViewFreelancer = () => {
   const { id } = useParams();
   const [freelancer, setFreelancer] = useState(null);
   const [loading, setLoading] = useState(true);
+  
+
 
   useEffect(() => {
     const fetchFreelancer = async () => {
@@ -68,7 +71,7 @@ const ViewFreelancer = () => {
             </p>
           </div>
           <div>
-            <button className="bg-green-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-green-600 transition-colors cursor-pointer" >Offer Job</button>
+            <OfferJobModal  freelancerId={freelancer._id}/>
           </div>
         </div>
 
