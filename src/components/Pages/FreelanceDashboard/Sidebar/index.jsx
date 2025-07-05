@@ -58,9 +58,12 @@ const FreeLancerSidebar = ({ isCollapsed, isMobileOpen, toggleSidebar }) => {
             <Link to={'/freelancerdashboard/browsejobs'} >
             <li onClick={toggleDropdown} className="px-4 py-2 bg-[#E4FDEC] hover:bg-green-300 cursor-pointer">Broswe Jobs</li>
             </Link>
-            {/* <Link to={'/freelancerdashboard/managejobs'}>
-            <li onClick={toggleDropdown} className="px-4 py-2 hover:bg-green-300 cursor-pointer">Manage Jobs</li>
-            </Link> */}
+            <Link to={'/freelancerdashboard/offers'}>
+            <li onClick={toggleDropdown} className="px-4 py-2 hover:bg-green-300 cursor-pointer">My Offers</li>
+            </Link>
+            <Link to={'/freelancerdashboard/active-jobs'}>
+            <li onClick={toggleDropdown} className="px-4 py-2 hover:bg-green-300 cursor-pointer">Active Jobs</li>
+            </Link>
           </ul>
         </div>
       )}

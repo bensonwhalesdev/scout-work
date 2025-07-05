@@ -10,10 +10,14 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import useUserApplications from "./Sidebar/Bids/Hook/useUserApplication";
+import useActiveJobs from "./Sidebar/BrowseJobs/Hook/useActiveJobs";
+import useOffers from "./Sidebar/BrowseJobs/Hook/useOffers";
 
 const FreelancerDashboard = () => {
   const { user } = useGetUserStore();
   const { applications } = useUserApplications();
+  const { activeJobs } = useActiveJobs();
+  const { offers  } = useOffers();
 
   return (
     <div className="p-6 min-h-screen bg-[#E4FDEC]">
@@ -42,15 +46,15 @@ const FreelancerDashboard = () => {
             <p className="text-sm text-gray-500">Active Jobs</p>
               <Briefcase className="text-indigo-500" />
            </div>
-             <h3 className="text-2xl font-bold text-gray-800">0</h3>
+             <h3 className="text-2xl font-bold text-gray-800">{activeJobs.length}</h3>
          </div>
 
           <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-5 border border-white/30 hover:scale-105 transition-transform">
            <div className="flex items-center justify-between mb-2">
-           <p className="text-sm text-gray-500">Completed</p>
+           <p className="text-sm text-gray-500">Offers</p>
             <CheckCircle className="text-green-500" />
            </div>
-           <h3 className="text-2xl font-bold text-gray-800">0</h3>
+           <h3 className="text-2xl font-bold text-gray-800">{offers.length}</h3>
          </div>
 
          <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-5 border border-white/30 hover:scale-105 transition-transform">
