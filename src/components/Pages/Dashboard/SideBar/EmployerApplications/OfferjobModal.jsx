@@ -55,7 +55,7 @@ const OfferJobModal = ({ freelancerId, triggerLabel = "Offer Job" }) => {
         freelancerId,
         message: form.message,
       });
-      toast.success("Job offer sent successfully!");
+      toast.success("Job offer sent successfully!")
       setOpen(false);
       setForm({ jobId: jobs[0]?._id || "", message: "" });
     } catch (err) {

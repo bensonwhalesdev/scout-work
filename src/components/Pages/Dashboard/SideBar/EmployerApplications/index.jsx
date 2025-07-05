@@ -57,6 +57,6 @@ const EmployerApplications = () => {
       </div>
     </section>
   );
-};
+}
 
 export default EmployerApplications;
