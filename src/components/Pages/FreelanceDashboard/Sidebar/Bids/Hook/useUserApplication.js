@@ -19,8 +19,13 @@ const useUserApplications = () => {
         ]);
 
         // Filter applications belonging to the logged-in user
+        // const userApplications = appsRes.data.filter(
+        //   (app) => app.email === user?.email || app.userId === user?._id
+        // );
         const userApplications = appsRes.data.filter(
-          (app) => app.email === user?.email || app.userId === user?._id
+          (app) =>
+            (app.email === user?.email || app.userId === user?._id) &&
+            app.status !== "responded"
         );
 
         setApplications(userApplications);
