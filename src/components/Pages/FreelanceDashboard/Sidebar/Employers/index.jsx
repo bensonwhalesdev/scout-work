@@ -17,7 +17,6 @@ const AllUsersGrid = () => {
         const res = await apiClient.get("/user/all");
         const filtered = res.data.filter((u) => u.role !== user?.role);
         setUsers(filtered);
-        console.log(filtered);
         
         setFilteredUsers(filtered);
       } catch (err) {

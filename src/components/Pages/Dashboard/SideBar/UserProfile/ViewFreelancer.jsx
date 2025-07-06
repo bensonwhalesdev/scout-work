@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiClient } from "@/lib/client";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Briefcase,
-  GraduationCap,
-  Star,
-  BadgeCheck,
-} from "lucide-react";
+import { Mail, Phone, MapPin, Briefcase, GraduationCap, Star, BadgeCheck, } from "lucide-react";
 import PreLoad from "@/components/Reuseables/PreLoad";
 import OfferJobModal from "../EmployerApplications/OfferjobModal";
+import useGetUserStore from "@/store/useGetUserStore";
 
-const ViewFreelancer = () => {
+const ViewFreelancer = ({freelancerId}) => {
   const { id } = useParams();
   const [freelancer, setFreelancer] = useState(null);
   const [loading, setLoading] = useState(true);
-  
-
+  const { user } = useGetUserStore(); 
 
   useEffect(() => {
     const fetchFreelancer = async () => {
@@ -34,6 +26,25 @@ const ViewFreelancer = () => {
 
     fetchFreelancer();
   }, [id]);
+
+
+  useEffect(() => {
+    const recordView = async () => {
+      if (user?.role === "employer") {
+        try {
+          await apiClient.post("/profile-views", {
+            employerId: user._id,
+            freelancerId: id,
+          });
+          
+        } catch (err) {
+          console.error("Failed to record view:", err);
+        }
+      }
+    };
+
+    recordView();
+  }, [id, user]);
 
   if (loading) {
     return <div className="flex justify-center items-center mt-50" ><PreLoad /></div>;

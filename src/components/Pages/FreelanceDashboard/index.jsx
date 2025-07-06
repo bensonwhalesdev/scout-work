@@ -12,12 +12,15 @@ import { Link } from "react-router-dom";
 import useUserApplications from "./Sidebar/Bids/Hook/useUserApplication";
 import useActiveJobs from "./Sidebar/BrowseJobs/Hook/useActiveJobs";
 import useOffers from "./Sidebar/BrowseJobs/Hook/useOffers";
+import useFreelancerProfileViews from "./Sidebar/FreelancerProfile/Hook/useFreelancerProfileViews";
+import ShareProfile from "./ShareProfile";
 
 const FreelancerDashboard = () => {
   const { user } = useGetUserStore();
   const { applications } = useUserApplications();
   const { activeJobs } = useActiveJobs();
   const { offers  } = useOffers();
+  const { views } = useFreelancerProfileViews()
 
   return (
     <div className="p-6 min-h-screen bg-[#E4FDEC]">
@@ -70,7 +73,7 @@ const FreelancerDashboard = () => {
          <p className="text-sm text-gray-500">Profile Views</p>
           <TrendingUp className="text-pink-500" />
          </div>
-        <h3 className="text-2xl font-bold text-gray-800">0</h3>
+        <h3 className="text-2xl font-bold text-gray-800">{views.length}</h3>
         </div>
         </div>
 
@@ -85,11 +88,13 @@ const FreelancerDashboard = () => {
           </button>
         
           <button className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-4 py-3 rounded-lg font-medium shadow hover:scale-105 transition">
-            Update Portfolio
+            <Link to={'/freelancerdashboard/userprofile'}> Update Portfolio</Link>
+            
           </button>
-          <button className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-3 rounded-lg font-medium shadow hover:scale-105 transition">
+          {/* <button className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-3 rounded-lg font-medium shadow hover:scale-105 transition">
             Share Your Profile
-          </button>
+          </button> */}
+          {user?.role === "freelancer" && ( <ShareProfile freelancer={user} /> )}
         </div>
       </div>
 
