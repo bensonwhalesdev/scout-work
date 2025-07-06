@@ -83,16 +83,18 @@ const Dashboard = () => {
             <div className="space-y-3">
               <p className="text-sm font-semibold text-gray-600">Basic</p>
               {jobs.length === 0 ? (
-                <p className="text-gray-500 text-sm">You have not posted any job yet</p>
-              ) : (
-                jobs.map((job) => (
-                  <Link to={`/dashboard/managejobs/${job._id}`} key={job._id}>
-                    <div className="p-4 bg-gray-50 hover:bg-gray-100 transition rounded-lg border border-gray-100">
-                      <p className="font-medium text-green-700">{job.title}</p>
-                      <p className="text-xs text-gray-600">{job.tags}</p>
-                    </div>
-                  </Link>
-                ))
+                 <p className="text-gray-500 text-sm">You have not posted any job yet</p>
+                   ) : ( [...jobs]
+                     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // newest first
+                     .slice(0, 4) // limit to 4 jobs
+                     .map((job) => (
+              <Link to={`/dashboard/managejobs/${job._id}`} key={job._id}>
+                <div className="p-4 bg-gray-50 hover:bg-gray-100 transition rounded-lg border border-gray-100">
+                  <p className="font-medium text-green-700">{job.title}</p>
+                  <p className="text-xs text-gray-600">{job.tags}</p>
+                </div>
+              </Link>
+               ))
               )}
             </div>
           </div>

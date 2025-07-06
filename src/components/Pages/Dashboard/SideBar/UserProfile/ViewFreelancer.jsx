@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiClient } from "@/lib/client";
-import { Mail, Phone, MapPin, Briefcase, GraduationCap, Star, BadgeCheck, } from "lucide-react";
+import { Mail, Phone, MapPin, Briefcase, GraduationCap, Star, BadgeCheck, BriefcaseBusiness, } from "lucide-react";
 import PreLoad from "@/components/Reuseables/PreLoad";
 import OfferJobModal from "../EmployerApplications/OfferjobModal";
 import useGetUserStore from "@/store/useGetUserStore";
@@ -56,77 +56,90 @@ const ViewFreelancer = ({freelancerId}) => {
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12 animate-fade-in">
-      <div className="bg-gradient-to-br from-white to-green-50 rounded-3xl shadow-2xl p-10 space-y-10">
-        {/* Avatar and Header */}
-        <div className="flex flex-col md:flex-row items-center gap-8 relative">
-          <img
-            src={freelancer.avatar || "/avatar.jpeg"}
-            alt={freelancer.firstName}
-            className="w-36 h-36 rounded-full border-4 border-green-500 object-cover shadow-lg hover:scale-105 transition-transform"
-          />
-          <div className="text-center md:text-left space-y-1">
-            <h1 className="text-4xl font-extrabold text-green-700 tracking-tight">
-              {freelancer.firstName}
-            </h1>
-            <p className="text-md text-gray-600 flex items-center gap-2">
-              <BadgeCheck className="w-4 h-4 text-green-500" />
-              {freelancer.position || "No title set"}
-            </p>
-            <p className="text-sm text-gray-500 flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              {freelancer.location || "Unknown Location"}
-            </p>
-            <p className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-yellow-500" />
-              {freelancer.skill}
-            </p>
-          </div>
-          <div>
-            <OfferJobModal  freelancerId={freelancer._id}/>
-          </div>
-        </div>
-
-        {/* Grid Details */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Info label="Email" icon={<Mail className="w-4 h-4" />} value={freelancer.email} />
-          <Info label="Phone" icon={<Phone className="w-4 h-4" />} value={freelancer.phone} />
-          <Info label="Experience" icon={<Briefcase className="w-4 h-4" />} value={freelancer.experience} />
-          {/* <Info label="Skill" icon={<Star className="w-4 h-4 text-yellow-500" />} value={freelancer.skill} /> */}
-          <Info label="Certification" value={freelancer.certification} />
-          <Info label="Education" icon={<GraduationCap className="w-4 h-4" />} value={freelancer.education} />
-          <Info label="Rate (₦/hr)" value={`₦${freelancer.rate || 0}`} />
-          <Info label="Portfolio" value={freelancer.portfolio} />
-        </div>
-
-        {/* About Me Section */}
-        <div className="bg-white rounded-2xl p-6 shadow-inner">
-          <h3 className="text-xl font-semibold text-green-600 mb-2">About Me</h3>
-          <p className="text-gray-700 leading-relaxed">
-            {freelancer.aboutMe || "No bio provided."}
-          </p>
-        </div>
-
-        {/* Work History */}
-        <div className="bg-white rounded-2xl p-6 shadow-inner">
-          <h3 className="text-xl font-semibold text-green-600 mb-2">Work History</h3>
-          <p className="text-gray-700 leading-relaxed">
-            {freelancer.history || "No work history yet."}
-          </p>
-        </div>
+  <div className="bg-gradient-to-tr from-white to-green-50 rounded-3xl shadow-xl p-10 space-y-12">
+    
+    {/* Header */}
+    <div className="flex flex-col md:flex-row items-center gap-10">
+      <img
+        src={freelancer.avatar || "/avatar.jpeg"}
+        alt={freelancer.firstName}
+        className="w-36 h-36 rounded-full border-4 border-green-400 object-cover shadow-md hover:scale-105 transition duration-300"
+      />
+      <div className="text-center md:text-left space-y-2">
+        <h1 className="text-4xl font-bold text-green-500">{freelancer.firstName}</h1>
+        <p className="flex items-center justify-center md:justify-start text-sm text-gray-600 gap-2">
+          <BadgeCheck className="text-green-500 w-4 h-4" />
+          {freelancer.position || "No title set"}
+        </p>
+        <p className="flex items-center justify-center md:justify-start text-sm text-gray-600 gap-2">
+          <MapPin className="text-green-500 w-4 h-4" />
+          {freelancer.location || "Unknown Location"}
+        </p>
+        <p className="flex items-center justify-center md:justify-start text-sm text-gray-600 gap-2">
+          <Star className="w-4 h-4 text-yellow-500" />
+          {freelancer.skill}
+        </p>
       </div>
-    </section>
+      <div className="mt-4 md:mt-0">
+        <OfferJobModal freelancerId={freelancer._id} />
+      </div>
+    </div>
+
+    {/* Grid Section */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        { label: "Email", value: freelancer.email },
+        { label: "Phone Number", value: freelancer.phone },
+        { label: "Rate (₦/hr)", value: freelancer.rate || "N/A" },
+        {
+          label: "Portfolio",
+          value: freelancer.portfolio ? (
+            <a
+              href={
+                freelancer.portfolio.startsWith("http")
+                  ? freelancer.portfolio
+                  : `https://${freelancer.portfolio}`
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline hover:text-blue-800 transition text-sm"
+            >
+              {freelancer.portfolio}
+            </a>
+          ) : (
+            "N/A"
+          ),
+        },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="bg-white rounded-xl border border-green-100 p-5 shadow-sm hover:shadow-md hover:scale-[1.01] transition duration-300"
+        >
+          <h3 className="text-green-600 font-semibold text-md mb-1">{item.label}</h3>
+          <p className="text-gray-700 text-sm">{item.value}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* Details Sections */}
+    {[
+      { title: "Education", value: freelancer.education },
+      { title: "Certification", value: freelancer.certification },
+      { title: "About Me", value: freelancer.aboutMe },
+      { title: "Experience", value: freelancer.experience, icon: <BriefcaseBusiness className="w-4 h-4 text-green-600" /> },
+      { title: "Work History", value: freelancer.history },
+    ].map((item, i) => (
+      <div key={i} className="bg-white rounded-2xl p-6 shadow-inner border border-green-100">
+        <h3 className="text-xl font-semibold text-green-600 mb-2 flex items-center gap-2">
+          {item.icon} {item.title}
+        </h3>
+        <p className="text-gray-700 leading-relaxed text-sm">{item.value || "N/A"}</p>
+      </div>
+    ))}
+  </div>
+</section>
   );
 };
 
-const Info = ({ label, value, icon }) => (
-  <div className="bg-white/80  p-4 rounded-xl shadow-sm hover:shadow-md transition">
-    <p className="text-xs text-gray-500 flex items-center gap-2 font-medium">
-      {icon} {label}
-    </p>
-    <p className="text-md font-semibold text-green-700 mt-1 truncate">
-      {value || "N/A"}
-    </p>
-  </div>
-);
 
 export default ViewFreelancer;

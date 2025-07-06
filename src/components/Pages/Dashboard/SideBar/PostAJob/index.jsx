@@ -3,13 +3,6 @@ import { FolderClosed } from 'lucide-react';
 import usePostJob from './Hook/usePostJob';
 
 const PostaJob = () => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsMobileSidebarOpen(!isMobileSidebarOpen);
-  };
-
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('')
   const [location, setLocation] = useState('');
@@ -28,20 +21,8 @@ const PostaJob = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const jobData = {
-      title,
-      company,
-      location,
-      region,
-      jobType,
-      isRemote,
-      isOnsite,
-      tags,
-      category,
-      description,
-      rate,
-      applyLink,
-    };
+    const jobData = { title, company, location,region, jobType, isRemote, isOnsite, tags,category,
+      description, rate, applyLink, };
 
     postJob(jobData);
   };
@@ -54,7 +35,7 @@ const PostaJob = () => {
         <div className="bg-white p-6 rounded-lg shadow-md">
           <div className="flex items-center gap-2 mb-4">
             <FolderClosed className="text-green-600" />
-            <h2 className="text-lg font-semibold text-gray-700">Job Submission Form</h2>
+            <h2 className="text-lg font-semibold text-gray-700 text-sm">Job Submission Form</h2>
           </div>
 
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -94,12 +75,12 @@ const PostaJob = () => {
               </div>
 
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Job Region</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Country</label>
                 <input
                   type="text"
                   value={region}
                   onChange={(e) => setRegion(e.target.value)}
-                  placeholder="Enter region"
+                  placeholder="Enter Country"
                   className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm"
                 />
               </div>
@@ -216,13 +197,7 @@ const PostaJob = () => {
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-[#26AE61] hover:bg-[#195A22] text-white py-2 px-4 rounded-md transition"
-            >
-              {loading ? 'Submitting...' : 'Submit Job'}
-            </button>
+            <button type="submit" disabled={loading} className="w-full bg-[#26AE61] hover:bg-[#195A22] text-white py-2 px-4 rounded-md transition cursor-pointer">{loading ? 'Submitting...' : 'Submit Job'}</button>
           </form>
         </div>
       </main>

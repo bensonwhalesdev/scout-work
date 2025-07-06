@@ -102,7 +102,7 @@ const ApplyJobForm = () => {
           </div>
 
           <div>
-            <Label className="text-gray-600">Message / Cover Letter</Label>
+            <Label className="text-gray-600">Message</Label>
             <Textarea
               name="message"
               value={formData.message}
@@ -131,7 +131,7 @@ const ApplyJobForm = () => {
             <Button
               type="submit"
               disabled={loading || !formData.resume}
-              className="w-full bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-md"
+              className="w-full bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-md cursor-pointer"
             >
               {loading ? "Submitting..." : "Submit Application"}
             </Button>
