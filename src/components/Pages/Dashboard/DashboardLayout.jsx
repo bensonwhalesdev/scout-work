@@ -6,11 +6,13 @@ import { apiClient } from "@/lib/client";
 import useGetUserStore from "@/store/useGetUserStore";
 import LayoutFooter from "@/components/Reuseables/LayoutFooter";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import useRedirectByRole from "@/Hook/useAuthRedirect";
 
 
 const DashboardLayout = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  useRedirectByRole()
 
   const toggleSidebar = () => {
     setIsMobileSidebarOpen(!isMobileSidebarOpen);
