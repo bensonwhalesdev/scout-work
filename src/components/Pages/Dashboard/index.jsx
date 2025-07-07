@@ -10,6 +10,7 @@ const Dashboard = () => {
   const { user } = useGetUserStore();
   const { jobs } = useGetUserJobs();
   const { applications } = useEmployerApplications()
+  
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-green-50 to-white px-4 md:px-6 py-6">

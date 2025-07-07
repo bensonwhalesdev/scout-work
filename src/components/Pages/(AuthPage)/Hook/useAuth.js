@@ -21,11 +21,7 @@ export const useAuth = () => {
       });
 
       const userRole = res.data?.user?.role;
-      if (userRole === 'employer') {
-        navigate('/dashboard');
-      } else {
-        navigate('/freelancerdashboard');
-      }
+      navigate(userRole === "employer" ? "/dashboard" : "/freelancerdashboard");
     } catch (err) {
       console.error('Signup error:', err);
       setError(err.response?.data?.message || 'Something went wrong');
@@ -45,11 +41,7 @@ export const useAuth = () => {
       });
 
       const userRole = res.data?.user?.role;
-      if (userRole === 'employer') {
-        navigate('/dashboard');
-      } else {
-        navigate('/freelancerdashboard');
-      }
+      navigate(userRole === "employer" ? "/dashboard" : "/freelancerdashboard")
     } catch (err) {
       console.error('Login error:', err);
       setError(err.response?.data?.message || 'Invalid credentials');

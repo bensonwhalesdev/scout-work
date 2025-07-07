@@ -24,7 +24,13 @@ const HeaderBar = ({ toggleSidebar }) => {
             </div>
            </div>
           <div className="relative group">
-            <button className="flex items-center gap-1">For Employers <ChevronDown size={16} /></button>
+            <button className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-green-600 transition">For Employers <ChevronDown size={16} /></button>
+            <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible invisible transition duration-200 z-99">
+              <ul className="py-2">
+                <li><Link to="/dashboard/managejobs" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600">Manage Jobs</Link></li>
+                <li><Link to="/dashboard/applications" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600">Applications</Link></li>
+              </ul>
+            </div>
           </div>
         </nav>
       </div>

@@ -8,9 +8,8 @@ import LayoutFooter from "@/components/Reuseables/LayoutFooter";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 
 
-
 const DashboardLayout = () => {
-   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {

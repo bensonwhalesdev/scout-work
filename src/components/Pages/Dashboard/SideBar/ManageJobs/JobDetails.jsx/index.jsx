@@ -32,14 +32,13 @@ const JobDetails = () => {
         setFormData(res.data.job);
       } catch (error) {
         toast.error("Failed to load job");
-        navigate("/dashboard/managejobs");
       } finally {
         setLoading(false);
       }
     };
 
     fetchJob();
-  }, [id, navigate]);
+  }, [id]);
 
   const handleDelete = async () => {
     await deleteJob(id);

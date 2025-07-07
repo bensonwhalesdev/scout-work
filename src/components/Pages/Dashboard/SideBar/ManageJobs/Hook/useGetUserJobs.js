@@ -1,9 +1,11 @@
 import { apiClient } from '@/lib/client';
+import useGetUserStore from '@/store/useGetUserStore';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 
 const useGetUserJobs = () => {
+  const { user } = useGetUserStore()
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +14,9 @@ const useGetUserJobs = () => {
   const fetchJobs = async () => {
     try {
       const res = await apiClient.get('/job/my-jobs');
-      setJobs(res.data.jobs);
+      const jobsData = res.data.jobs;
+      setJobs(jobsData);
+
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to load jobs');
     } finally {
