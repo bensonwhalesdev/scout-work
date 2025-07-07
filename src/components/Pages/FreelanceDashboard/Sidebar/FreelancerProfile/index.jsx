@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useFreelancerProfile from "./Hook/useFreelancerProfile";
 import PreLoad from "@/components/Reuseables/PreLoad";
-import { Star } from "lucide-react";
+import { Camera, Star } from "lucide-react";
 
 const tabs = ["Profile", "Settings"];
 
@@ -45,7 +45,7 @@ const FreelancerProfile = () => {
           />
           <input type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
           <span className="absolute bottom-1 left-1/2 transform -translate-x-1/2 text-xs bg-white border px-2 py-1 rounded shadow hidden group-hover:block">
-            Click to change
+            <Camera className="inline-block w-4 h-4 text-green-500" />
           </span>
         </label>
 
