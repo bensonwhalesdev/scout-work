@@ -14,7 +14,7 @@ const Header = () => {
         <nav className="flex justify-between items-center p-1 w-[90%] mx-auto">
           {/* Logo */}
           <div>
-            <img className="w-20" src="/logo1.png" alt="logo" />
+            <Link to="/"><img className="w-20" src="/logo1.png" alt="logo" /></Link>
           </div>
 
           {/* Desktop Navigation */}

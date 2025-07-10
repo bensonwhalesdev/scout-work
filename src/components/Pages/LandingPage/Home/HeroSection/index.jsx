@@ -1,6 +1,7 @@
 import React from 'react';
 import { Search, MapPin, Briefcase } from 'lucide-react';
 import 'animate.css'
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -66,8 +67,7 @@ const HeroSection = () => {
           {/* Search Button */}
           <div className="flex items-end">
             <button className="bg-[#26AE61] hover:bg-[#195A22] text-white px-6 py-3 rounded-md w-full md:w-auto text-sm flex items-center justify-center gap-2 cursor-pointer">
-              <Search size={16} />
-              Search
+              <Link className='flex gap-2 items-center' to={'/auth'}><Search size={16} />Search</Link>
             </button>
           </div>
         </div>

@@ -88,7 +88,7 @@ const UserProfile = () => {
         </h3>
         <p className="text-gray-700 leading-relaxed">
           {user?.aboutMe ||
-            "Passionate about building innovative products and solving user-centric problems. Brings a background in technology and a strong sense of design."}
+            "N/A."}
         </p>
       </div>
     </div>
