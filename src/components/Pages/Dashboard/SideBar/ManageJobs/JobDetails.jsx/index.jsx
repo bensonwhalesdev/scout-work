@@ -105,9 +105,11 @@ const JobDetails = () => {
         <p className="whitespace-pre-line text-gray-800 leading-relaxed">{job.description}</p>
         <p className="mt-4 text-blue-500 underline"><a href="">{job.applyLink}</a></p>
         
-        <Link to={`/freelancerdashboard/applyjob/${job._id}`}>
-        <ReuseableButton classStyle="bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all duration-300 ease-in-out mt-4 focus:outline-none focus:ring-2 focus:ring-green-300 cursor-pointer" text="Apply Here" />
-        </Link>
+        {user?.role === "freelancer" && (
+         <Link to={`/freelancerdashboard/applyjob/${job._id}`}>
+          <ReuseableButton classStyle="bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all duration-300 ease-in-out mt-4 focus:outline-none focus:ring-2 focus:ring-green-300 cursor-pointer" text="Apply Here"/>
+         </Link>
+        )}
       </div>
 
         {user?._id === job?.user && (
