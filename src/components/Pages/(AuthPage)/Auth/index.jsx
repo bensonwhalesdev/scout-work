@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../Hook/useAuth';
 import { Eye, EyeOff } from 'lucide-react';
+import PasswordRequirements from './passwordrequirements';
 
 const AuthTabs = () => {
   const [activeTab, setActiveTab] = useState('signup');
@@ -117,9 +118,7 @@ const AuthTabs = () => {
           </div>
 
           {/* Password policy info */}
-          <p className="text-xs text-gray-500 -mt-2">
-            Password must be at least 6 characters, contain 1 uppercase letter, 1 number, and 1 special character.
-          </p>
+          <PasswordRequirements password={formData.password} />
 
           <button
             type="submit"

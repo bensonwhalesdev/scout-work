@@ -28,7 +28,7 @@ export const useAuth = () => {
       navigate(user.role === 'employer' ? '/dashboard' : '/freelancerdashboard');
     } catch (err) {
       console.error('Signup error:', err);
-      setError(err.response?.data?.message || 'Something went wrong');
+      setError(err.response?.data?.message || 'Something went wrong, Cross-check your credentials');
     } finally {
       setLoading(false);
     }
